@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TMapper">
+    <insert id="insert" parameterType="com.example.demo.bean.T">
+        INSERT INTO test_transactional (id, name) values (#{id}, #{name})
+    </insert>
+    <update id="init1">
+        drop table if exists test_transactional
+    </update>
+    <update id="init2">
+        CREATE TABLE test_transactional (id INT NOT NULL PRIMARY KEY, name VARCHAR(10)) COLLATE='utf8_general_ci' ENGINE=InnoDB
+    </update>
+    <select id="select" resultType="string">
+        SELECT name FROM test_transactional
+    </select>
+</mapper>
